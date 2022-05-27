@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Pokemon {
 	
@@ -21,8 +23,9 @@ public class Pokemon {
 	private String name;
 	private int baseXP;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn
+	@JsonBackReference
 	private Trainer trainer;
 
 	public Pokemon(int pokedexId, String name, int baseXP, Trainer trainer) {

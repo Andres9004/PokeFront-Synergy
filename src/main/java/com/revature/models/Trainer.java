@@ -1,6 +1,6 @@
 package com.revature.models;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class Trainer {
 	
@@ -21,8 +23,9 @@ public class Trainer {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "trainer", fetch=FetchType.EAGER)
-	private List<Pokemon> party = new ArrayList<>();
+	@OneToMany(mappedBy = "trainer", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<Pokemon> party;// = new ArrayList<>();
 	
 	public Trainer(int tId, String name, List<Pokemon> party) {
 		super();
