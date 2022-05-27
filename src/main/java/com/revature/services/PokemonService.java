@@ -22,7 +22,6 @@ public class PokemonService {
 	public PokemonService(PokemonDAO pokemonDao) {
 		super();
 		this.pokemonDao = pokemonDao;
-		this.trainerService = trainerService;
 	}
 	
 	public List<Pokemon> getAllPokemons(){

@@ -1,9 +1,10 @@
 package com.revature.models;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,8 +21,8 @@ public class Trainer {
 	
 	private String name;
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	private List<Pokemon> party;
+	@OneToMany(mappedBy = "trainer", fetch=FetchType.EAGER)
+	private List<Pokemon> party = new ArrayList<>();
 	
 	public Trainer(int tId, String name, List<Pokemon> party) {
 		super();
